@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2022","es6", "dom"],
+    "module": "ES2022",
+    "moduleResolution": "Bundler", // introduced in TypeScript 5.0
+    "types": ["reflect-metadata"],
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "target": "ES2022",
+    //"strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+  },
+  "include": ["src/**/*.ts"],
+}

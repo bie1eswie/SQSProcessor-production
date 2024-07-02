@@ -1,0 +1,29 @@
+service: sqs-message-processor
+
+plugins:
+  - serverless-esbuild # used for compiling/packaging the Typescript code
+  - serverless-offline # used for local execution
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  stage: ${opt:stage}
+  environment:  # repository wide Lambda env variables
+      #SENDGRID_API_KEY: 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
+      SENDGRID_FROM_EMAIL: banzim12345@gmail.com
+
+custom:
+  customVariable1: Hello, World!
+
+functions:
+  # Serverless Framework specific syntax
+  email-processor:
+    handler: ./src/emailHandler.handler
+    events:
+      - httpApi:
+          path: /api/message-sender
+          method: POST
+    environment:
+      SENDGRID_API_KEY: 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
+      SENDGRID_FROM_EMAIL: banzim12345@gmail.com
